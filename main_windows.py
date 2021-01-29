@@ -157,6 +157,7 @@ def main():
                 new_logout.logout_check()
 
             elif new_recognition.recognition(memberid) < 30:
+                new_logout.logout_check()
                 login_respond = '登入成功！歡迎 ' + memberid + '！'+'\n歡迎光臨，您現在可進入商店購物!! '
                 respond_label.configure(text=login_respond)
 
@@ -175,7 +176,6 @@ def main():
                 db_created.login(id_num, memberid, savetime)
                 new_mongo_connect.login(id_num, memberid, savetime)
                 new_kafka_producer.kafka_producer('logs',msg, 'login')
-                new_logout.logout_check()
 
 
             else:
